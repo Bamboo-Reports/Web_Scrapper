@@ -1,0 +1,148 @@
+company,role,city,city_data_points,num_salaries,avg_salary,min_salary,max_salary,median_salary,p25_salary,p75_salary,p90_salary,fixed_pct,variable_pct,min_exp,max_exp,detail_url
+Clari,Software Engineer2,All India,13,13,30.7L,27.0L,38.5L,31.0L,30.0L,33.0L,36.4L,,,3,5,https://www.ambitionbox.com/salaries/clari-salaries/software-engineer2
+Clari,Software Engineer2,Bengaluru (Karnataka),10,13,30.7L,27.0L,38.5L,31.0L,30.0L,33.0L,36.4L,,,3,5,https://www.ambitionbox.com/salaries/clari-salaries/software-engineer2
+Clari,Senior Software Engineer,All India,9,9,43.3L,36.8L,52.3L,41.9L,36.8L,50.6L,52.3L,92%,8%,3,8,https://www.ambitionbox.com/salaries/clari-salaries/senior-soft-engineer
+Clari,Senior Software Engineer,Bengaluru (Karnataka),7,9,43.3L,36.8L,52.3L,41.9L,36.8L,50.6L,52.3L,92%,8%,3,8,https://www.ambitionbox.com/salaries/clari-salaries/senior-soft-engineer
+Clari,Senior Software Engineer,Nagpur (Maharashtra),2,9,43.3L,36.8L,52.3L,41.9L,36.8L,50.6L,52.3L,92%,8%,3,8,https://www.ambitionbox.com/salaries/clari-salaries/senior-soft-engineer
+Clari,Software Engineer,All India,6,6,20.9L,15.7L,29.0L,20.5L,17.0L,26.0L,28.7L,,,0,4,https://www.ambitionbox.com/salaries/clari-salaries/software-engineer
+Clari,Software Engineer,Bangalore / Bengaluru (Karnataka),3,6,20.9L,15.7L,29.0L,20.5L,17.0L,26.0L,28.7L,,,0,4,https://www.ambitionbox.com/salaries/clari-salaries/software-engineer
+Clari,Software Engineer,Hyderabad / Secunderabad (Telangana),1,6,20.9L,15.7L,29.0L,20.5L,17.0L,26.0L,28.7L,,,0,4,https://www.ambitionbox.com/salaries/clari-salaries/software-engineer
+Clari,Staff Software Engineer,All India,5,5,68.6L,49.8L,96.1L,68.0L,42.4L,75.1L,95.0L,95%,5%,9,11,https://www.ambitionbox.com/salaries/clari-salaries/staff-software-engineer
+Clari,Staff Software Engineer,Bangalore / Bengaluru (Karnataka),4,5,68.6L,49.8L,96.1L,68.0L,42.4L,75.1L,95.0L,95%,5%,9,11,https://www.ambitionbox.com/salaries/clari-salaries/staff-software-engineer
+Clari,Software Developer,All India,3,3,27.7L,27.0L,29.0L,27.0L,27.0L,28.0L,28.6L,,,3,3,https://www.ambitionbox.com/salaries/clari-salaries/software-developer
+Clari,Software Developer,Bengaluru (Karnataka),3,3,27.7L,27.0L,29.0L,27.0L,27.0L,28.0L,28.6L,,,3,3,https://www.ambitionbox.com/salaries/clari-salaries/software-developer
+Clari,Softwaretest Engineer,All India,3,3,16.3L,15.0L,19.0L,15.0L,15.0L,17.0L,18.2L,,,0,6,https://www.ambitionbox.com/salaries/clari-salaries/softwaretest-engineer
+Clari,Softwaretest Engineer,Bangalore / Bengaluru (Karnataka),3,3,16.3L,15.0L,19.0L,15.0L,15.0L,17.0L,18.2L,,,0,6,https://www.ambitionbox.com/salaries/clari-salaries/softwaretest-engineer
+Clari,Configuration Consultant,All India,3,3,14.3L,12.8L,17.0L,13.0L,12.9L,15.0L,16.2L,,,3,7,https://www.ambitionbox.com/salaries/clari-salaries/configuration-consultant
+Clari,Configuration Consultant,Bangalore / Bengaluru (Karnataka),3,3,14.3L,12.8L,17.0L,13.0L,12.9L,15.0L,16.2L,,,3,7,https://www.ambitionbox.com/salaries/clari-salaries/configuration-consultant
+Clari,Senior Software Test Engineer 2,All India,3,3,40.0L,36.0L,46.0L,40.0L,40.0L,40.0L,40.0L,,,9,9,https://www.ambitionbox.com/salaries/clari-salaries/senior-software-test-engineer-2
+Clari,Senior Software Test Engineer 2,Bengaluru (Karnataka),3,3,40.0L,36.0L,46.0L,40.0L,40.0L,40.0L,40.0L,,,9,9,https://www.ambitionbox.com/salaries/clari-salaries/senior-software-test-engineer-2
+Clari,Software Engineer Level 1,All India,2,2,16.5L,14.4L,18.4L,16.0L,15.5L,16.5L,16.8L,,,2,3,https://www.ambitionbox.com/salaries/clari-salaries/software-engineer-level-1
+Clari,Software Engineer Level 1,Bengaluru (Karnataka),2,2,16.5L,14.4L,18.4L,16.0L,15.5L,16.5L,16.8L,,,2,3,https://www.ambitionbox.com/salaries/clari-salaries/software-engineer-level-1
+Clari,Senior Data Scientist,All India,2,2,51.5L,47.5L,52.5L,50.0L,50.0L,50.0L,50.0L,,,6,6,https://www.ambitionbox.com/salaries/clari-salaries/senior-data-scientist
+Clari,Product Marketing Specialist,All India,2,2,14.9L,13.1L,16.7L,14.5L,13.8L,15.2L,15.7L,,,2,3,https://www.ambitionbox.com/salaries/clari-salaries/product-marketing-specialist
+Clari,Product Marketing Specialist,New Delhi (Delhi),1,2,14.9L,13.1L,16.7L,14.5L,13.8L,15.2L,15.7L,,,2,3,https://www.ambitionbox.com/salaries/clari-salaries/product-marketing-specialist
+Clari,Finance Manager,All India,2,2,19.1L,16.6L,21.3L,18.5L,18.5L,18.5L,18.5L,,,3,4,https://www.ambitionbox.com/salaries/clari-salaries/finance-manager
+Clari,Finance Manager,Bangalore / Bengaluru (Karnataka),2,2,19.1L,16.6L,21.3L,18.5L,18.5L,18.5L,18.5L,,,3,4,https://www.ambitionbox.com/salaries/clari-salaries/finance-manager
+Clari,Senior Software Test Engineer,All India,2,2,41.7L,36.5L,46.6L,40.5L,40.2L,40.8L,40.9L,,,9,10,https://www.ambitionbox.com/salaries/clari-salaries/senior-software-test-engineer
+Clari,Senior Software Test Engineer,Bengaluru (Karnataka),2,2,41.7L,36.5L,46.6L,40.5L,40.2L,40.8L,40.9L,,,9,10,https://www.ambitionbox.com/salaries/clari-salaries/senior-software-test-engineer
+Clari,Senior Solution Consultant,All India,2,2,37.1L,32.4L,41.4L,36.0L,35.0L,37.0L,37.0L,,,0,10,https://www.ambitionbox.com/salaries/clari-salaries/senior-solution-consultant
+Clari,Senior Solution Consultant,Bangalore / Bengaluru (Karnataka),2,2,37.1L,32.4L,41.4L,36.0L,35.0L,37.0L,37.0L,,,0,10,https://www.ambitionbox.com/salaries/clari-salaries/senior-solution-consultant
+Clari,Principal Product Manager,All India,2,2,68.0L,62.7L,69.3L,66.0L,66.0L,66.0L,66.0L,,,16,17,https://www.ambitionbox.com/salaries/clari-salaries/principal-product-manager
+Clari,Principal Product Manager,Bangalore / Bengaluru (Karnataka),2,2,68.0L,62.7L,69.3L,66.0L,66.0L,66.0L,66.0L,,,16,17,https://www.ambitionbox.com/salaries/clari-salaries/principal-product-manager
+Clari,Senior Software Engineer Tester,All India,2,2,40.1L,35.1L,44.8L,39.0L,38.0L,39.9L,40.5L,,,8,9,https://www.ambitionbox.com/salaries/clari-salaries/senior-software-engineer-tester
+Clari,Senior Software Engineer Tester,Bangalore / Bengaluru (Karnataka),2,2,40.1L,35.1L,44.8L,39.0L,38.0L,39.9L,40.5L,,,8,9,https://www.ambitionbox.com/salaries/clari-salaries/senior-software-engineer-tester
+Clari,Senior Software Qa Testing Engineer,All India,2,2,36.0L,31.5L,40.2L,35.0L,32.5L,37.5L,39.0L,,,9,9,https://www.ambitionbox.com/salaries/clari-salaries/senior-software-qa-testing-engineer
+Clari,Senior Software Qa Testing Engineer,Bengaluru (Karnataka),2,2,36.0L,31.5L,40.2L,35.0L,32.5L,37.5L,39.0L,,,9,9,https://www.ambitionbox.com/salaries/clari-salaries/senior-software-qa-testing-engineer
+Clari,Senior Technical Support Manager,All India,2,2,64.4L,59.4L,65.6L,62.5L,62.5L,62.5L,62.5L,,,18,19,https://www.ambitionbox.com/salaries/clari-salaries/senior-technical-support-manager
+Clari,Senior Technical Support Manager,Bangalore / Bengaluru (Karnataka),2,2,64.4L,59.4L,65.6L,62.5L,62.5L,62.5L,62.5L,,,18,19,https://www.ambitionbox.com/salaries/clari-salaries/senior-technical-support-manager
+Clari,Software Test Engineer 2,All India,2,2,25.8L,22.5L,28.8L,25.0L,22.0L,28.0L,28.0L,,,0,5,https://www.ambitionbox.com/salaries/clari-salaries/software-test-engineer-2
+Clari,Software Test Engineer 2,Bangalore / Bengaluru (Karnataka),2,2,25.8L,22.5L,28.8L,25.0L,22.0L,28.0L,28.0L,,,0,5,https://www.ambitionbox.com/salaries/clari-salaries/software-test-engineer-2
+Clari,Data Scientist,All India,1,1,6.0L,5.2L,6.7L,5.8L,5.8L,5.8L,5.8L,,,3,3,https://www.ambitionbox.com/salaries/clari-salaries/data-scientist
+Clari,Data Scientist,Pune (Maharashtra),1,1,6.0L,5.2L,6.7L,5.8L,5.8L,5.8L,5.8L,,,3,3,https://www.ambitionbox.com/salaries/clari-salaries/data-scientist
+Cint,Project Manager,All India,11,11,11.2L,9.0L,15.2L,11.0L,9.0L,12.2L,13.5L,,,4,9,https://www.ambitionbox.com/salaries/cint-salaries/project-manager
+Cint,Project Manager,Gurgaon / Gurugram (Haryana),5,11,11.2L,9.0L,15.2L,11.0L,9.0L,12.2L,13.5L,,,4,9,https://www.ambitionbox.com/salaries/cint-salaries/project-manager
+Cint,Project Manager,Hyderabad / Secunderabad (Telangana),3,11,11.2L,9.0L,15.2L,11.0L,9.0L,12.2L,13.5L,,,4,9,https://www.ambitionbox.com/salaries/cint-salaries/project-manager
+Cint,Project Manager,Bangalore / Bengaluru (Karnataka),3,11,11.2L,9.0L,15.2L,11.0L,9.0L,12.2L,13.5L,,,4,9,https://www.ambitionbox.com/salaries/cint-salaries/project-manager
+Cint,Customer Success Representative,All India,9,9,10.4L,7.8L,14.2L,11.5L,6.8L,12.7L,14.6L,,,2,7,https://www.ambitionbox.com/salaries/cint-salaries/customer-success-representative
+Cint,Customer Success Representative,Hyderabad / Secunderabad (Telangana),3,9,10.4L,7.8L,14.2L,11.5L,6.8L,12.7L,14.6L,,,2,7,https://www.ambitionbox.com/salaries/cint-salaries/customer-success-representative
+Cint,Customer Success Representative,New Delhi (Delhi),2,9,10.4L,7.8L,14.2L,11.5L,6.8L,12.7L,14.6L,,,2,7,https://www.ambitionbox.com/salaries/cint-salaries/customer-success-representative
+Cint,Customer Success Representative,Gurgaon / Gurugram (Haryana),2,9,10.4L,7.8L,14.2L,11.5L,6.8L,12.7L,14.6L,,,2,7,https://www.ambitionbox.com/salaries/cint-salaries/customer-success-representative
+Cint,Customer Success Representative,Chennai (Tamil Nadu),2,9,10.4L,7.8L,14.2L,11.5L,6.8L,12.7L,14.6L,,,2,7,https://www.ambitionbox.com/salaries/cint-salaries/customer-success-representative
+Cint,Senior Project Manager,All India,6,6,12.6L,8.1L,17.0L,12.3L,10.1L,15.8L,17.0L,,,3,10,https://www.ambitionbox.com/salaries/cint-salaries/senior-project-manager
+Cint,Senior Project Manager,Mumbai (Maharashtra),2,6,12.6L,8.1L,17.0L,12.3L,10.1L,15.8L,17.0L,,,3,10,https://www.ambitionbox.com/salaries/cint-salaries/senior-project-manager
+Cint,Senior Project Manager,Hyderabad / Secunderabad (Telangana),2,6,12.6L,8.1L,17.0L,12.3L,10.1L,15.8L,17.0L,,,3,10,https://www.ambitionbox.com/salaries/cint-salaries/senior-project-manager
+Cint,Senior Project Manager,Gurgaon / Gurugram (Haryana),1,6,12.6L,8.1L,17.0L,12.3L,10.1L,15.8L,17.0L,,,3,10,https://www.ambitionbox.com/salaries/cint-salaries/senior-project-manager
+Cint,Senior Project Manager,Kalka (Haryana),1,6,12.6L,8.1L,17.0L,12.3L,10.1L,15.8L,17.0L,,,3,10,https://www.ambitionbox.com/salaries/cint-salaries/senior-project-manager
+Cint,Senior Analyst,All India,6,6,9.8L,6.4L,11.3L,10.0L,8.7L,10.0L,11.2L,,,2,6,https://www.ambitionbox.com/salaries/cint-salaries/senior-analyst
+Cint,Senior Analyst,New Delhi (Delhi),2,6,9.8L,6.4L,11.3L,10.0L,8.7L,10.0L,11.2L,,,2,6,https://www.ambitionbox.com/salaries/cint-salaries/senior-analyst
+Cint,Senior Analyst,Gurgaon / Gurugram (Haryana),2,6,9.8L,6.4L,11.3L,10.0L,8.7L,10.0L,11.2L,,,2,6,https://www.ambitionbox.com/salaries/cint-salaries/senior-analyst
+Cint,Service Engineer,All India,6,6,18.7L,17.6L,19.8L,18.7L,17.6L,19.8L,19.8L,,,3,3,https://www.ambitionbox.com/salaries/cint-salaries/service-engineer
+Cint,Service Engineer,New Delhi (Delhi),5,6,18.7L,17.6L,19.8L,18.7L,17.6L,19.8L,19.8L,,,3,3,https://www.ambitionbox.com/salaries/cint-salaries/service-engineer
+Cint,Senior Project Analyst,All India,5,5,6.1L,3.6L,7.0L,6.0L,6.0L,6.0L,6.6L,,,2,5,https://www.ambitionbox.com/salaries/cint-salaries/senior-project-analyst
+Cint,Senior Project Analyst,Gurgaon / Gurugram (Haryana),4,5,6.1L,3.6L,7.0L,6.0L,6.0L,6.0L,6.6L,,,2,5,https://www.ambitionbox.com/salaries/cint-salaries/senior-project-analyst
+Cint,Senior Project Analyst,New Delhi (Delhi),1,5,6.1L,3.6L,7.0L,6.0L,6.0L,6.0L,6.6L,,,2,5,https://www.ambitionbox.com/salaries/cint-salaries/senior-project-analyst
+Cint,Technical Analyst,All India,5,5,7.8L,7.2L,9.0L,7.3L,7.2L,8.5L,8.8L,91%,9%,2,4,https://www.ambitionbox.com/salaries/cint-salaries/technical-analyst
+Cint,Technical Analyst,New Delhi (Delhi),3,5,7.8L,7.2L,9.0L,7.3L,7.2L,8.5L,8.8L,91%,9%,2,4,https://www.ambitionbox.com/salaries/cint-salaries/technical-analyst
+Cint,Analyst,All India,5,5,10.1L,8.7L,12.0L,9.9L,8.8L,9.9L,11.2L,,,2,4,https://www.ambitionbox.com/salaries/cint-salaries/analyst
+Cint,Analyst,New Delhi (Delhi),2,5,10.1L,8.7L,12.0L,9.9L,8.8L,9.9L,11.2L,,,2,4,https://www.ambitionbox.com/salaries/cint-salaries/analyst
+Cint,Analyst,Gurgaon / Gurugram (Haryana),2,5,10.1L,8.7L,12.0L,9.9L,8.8L,9.9L,11.2L,,,2,4,https://www.ambitionbox.com/salaries/cint-salaries/analyst
+Cint,Analyst,Noida (Uttar Pradesh),1,5,10.1L,8.7L,12.0L,9.9L,8.8L,9.9L,11.2L,,,2,4,https://www.ambitionbox.com/salaries/cint-salaries/analyst
+Cint,Senior Technical Analyst,All India,5,5,8.0L,7.5L,8.2L,8.0L,7.9L,8.1L,8.2L,,,3,3,https://www.ambitionbox.com/salaries/cint-salaries/senior-technical-analyst
+Cint,IT Support Specialist,All India,5,5,7.4L,7.0L,7.9L,7.5L,7.3L,7.5L,7.7L,,,4,9,https://www.ambitionbox.com/salaries/cint-salaries/it-support-specialist
+Cint,IT Support Specialist,Noida (Uttar Pradesh),3,5,7.4L,7.0L,7.9L,7.5L,7.3L,7.5L,7.7L,,,4,9,https://www.ambitionbox.com/salaries/cint-salaries/it-support-specialist
+Cint,IT Support Specialist,Gurgaon / Gurugram (Haryana),2,5,7.4L,7.0L,7.9L,7.5L,7.3L,7.5L,7.7L,,,4,9,https://www.ambitionbox.com/salaries/cint-salaries/it-support-specialist
+Cint,Customer Success Consultant,All India,4,4,13.1L,12.4L,14.7L,12.7L,12.4L,13.4L,14.2L,92%,8%,4,9,https://www.ambitionbox.com/salaries/cint-salaries/customer-success-consultant
+Cint,Customer Success Consultant,Gurugram (Haryana),2,4,13.1L,12.4L,14.7L,12.7L,12.4L,13.4L,14.2L,92%,8%,4,9,https://www.ambitionbox.com/salaries/cint-salaries/customer-success-consultant
+Cint,Senior Quality Analyst,All India,4,4,11.4L,8.0L,16.0L,11.8L,8.0L,16.4L,17.9L,,,4,7,https://www.ambitionbox.com/salaries/cint-salaries/senior-quality-analyst
+Cint,Senior Quality Analyst,Kanpur (Uttar Pradesh),2,4,11.4L,8.0L,16.0L,11.8L,8.0L,16.4L,17.9L,,,4,7,https://www.ambitionbox.com/salaries/cint-salaries/senior-quality-analyst
+Cint,Senior Quality Analyst,Noida (Uttar Pradesh),1,4,11.4L,8.0L,16.0L,11.8L,8.0L,16.4L,17.9L,,,4,7,https://www.ambitionbox.com/salaries/cint-salaries/senior-quality-analyst
+Cint,Program Manager,All India,4,4,19.0L,14.2L,20.0L,19.0L,18.0L,20.0L,20.0L,,,6,9,https://www.ambitionbox.com/salaries/cint-salaries/program-manager
+Cint,Program Manager,Gurugram (Haryana),3,4,19.0L,14.2L,20.0L,19.0L,18.0L,20.0L,20.0L,,,6,9,https://www.ambitionbox.com/salaries/cint-salaries/program-manager
+Cint,Operations Specialist,All India,4,4,13.4L,10.8L,18.7L,13.2L,10.8L,13.4L,13.5L,,,7,11,https://www.ambitionbox.com/salaries/cint-salaries/operations-specialist
+Cint,Operations Specialist,Mumbai (Maharashtra),4,4,13.4L,10.8L,18.7L,13.2L,10.8L,13.4L,13.5L,,,7,11,https://www.ambitionbox.com/salaries/cint-salaries/operations-specialist
+Cint,Project Analyst,All India,4,4,5.4L,5.0L,6.2L,5.1L,5.0L,5.4L,5.9L,,,1,4,https://www.ambitionbox.com/salaries/cint-salaries/project-analyst
+Cint,Project Analyst,New Delhi (Delhi),3,4,5.4L,5.0L,6.2L,5.1L,5.0L,5.4L,5.9L,,,1,4,https://www.ambitionbox.com/salaries/cint-salaries/project-analyst
+Cint,Project Analyst,Gurugram (Haryana),1,4,5.4L,5.0L,6.2L,5.1L,5.0L,5.4L,5.9L,,,1,4,https://www.ambitionbox.com/salaries/cint-salaries/project-analyst
+Cint,Senior Survey Programmer,All India,4,4,11.2L,10.0L,13.0L,11.0L,10.0L,12.2L,12.7L,,,4,5,https://www.ambitionbox.com/salaries/cint-salaries/senior-survey-programmer
+Cint,Senior Survey Programmer,Noida (Uttar Pradesh),3,4,11.2L,10.0L,13.0L,11.0L,10.0L,12.2L,12.7L,,,4,5,https://www.ambitionbox.com/salaries/cint-salaries/senior-survey-programmer
+Cint,Senior Survey Programmer,New Delhi (Delhi),1,4,11.2L,10.0L,13.0L,11.0L,10.0L,12.2L,12.7L,,,4,5,https://www.ambitionbox.com/salaries/cint-salaries/senior-survey-programmer
+Cint,Survey Programmer,All India,4,4,9.6L,8.0L,11.5L,9.4L,8.7L,10.5L,11.5L,92%,8%,1,5,https://www.ambitionbox.com/salaries/cint-salaries/survey-programmer
+Cint,Survey Programmer,Chhindwara (Madhya Pradesh),3,4,9.6L,8.0L,11.5L,9.4L,8.7L,10.5L,11.5L,92%,8%,1,5,https://www.ambitionbox.com/salaries/cint-salaries/survey-programmer
+Cint,Survey Programmer,Noida (Uttar Pradesh),1,4,9.6L,8.0L,11.5L,9.4L,8.7L,10.5L,11.5L,92%,8%,1,5,https://www.ambitionbox.com/salaries/cint-salaries/survey-programmer
+Cint,Account Development Representative,All India,4,4,8.9L,5.3L,10.0L,9.4L,8.6L,10.0L,10.0L,,,1,2,https://www.ambitionbox.com/salaries/cint-salaries/account-development-representative
+Cint,Account Development Representative,Gurgaon / Gurugram (Haryana),2,4,8.9L,5.3L,10.0L,9.4L,8.6L,10.0L,10.0L,,,1,2,https://www.ambitionbox.com/salaries/cint-salaries/account-development-representative
+Cint,Account Development Representative,New Delhi (Delhi),1,4,8.9L,5.3L,10.0L,9.4L,8.6L,10.0L,10.0L,,,1,2,https://www.ambitionbox.com/salaries/cint-salaries/account-development-representative
+Cint,Account Development Representative,Chandigarh (Chandigarh),1,4,8.9L,5.3L,10.0L,9.4L,8.6L,10.0L,10.0L,,,1,2,https://www.ambitionbox.com/salaries/cint-salaries/account-development-representative
+Cint,Business Intelligence Analyst,All India,4,4,16.1L,15.0L,22.6L,15.8L,15.0L,16.5L,16.5L,,,4,5,https://www.ambitionbox.com/salaries/cint-salaries/business-intelligence-analyst
+Cint,Business Intelligence Analyst,Gurgaon / Gurugram (Haryana),3,4,16.1L,15.0L,22.6L,15.8L,15.0L,16.5L,16.5L,,,4,5,https://www.ambitionbox.com/salaries/cint-salaries/business-intelligence-analyst
+Cint,Business Intelligence Analyst,Kanpur (Uttar Pradesh),1,4,16.1L,15.0L,22.6L,15.8L,15.0L,16.5L,16.5L,,,4,5,https://www.ambitionbox.com/salaries/cint-salaries/business-intelligence-analyst
+Cint,Senior Quality Specialist,All India,4,4,8.7L,7.8L,10.0L,8.5L,8.3L,8.9L,9.6L,,,4,6,https://www.ambitionbox.com/salaries/cint-salaries/senior-quality-specialist
+Cint,Senior Quality Specialist,New Delhi (Delhi),3,4,8.7L,7.8L,10.0L,8.5L,8.3L,8.9L,9.6L,,,4,6,https://www.ambitionbox.com/salaries/cint-salaries/senior-quality-specialist
+Cint,Senior Quality Specialist,Gurugram (Haryana),1,4,8.7L,7.8L,10.0L,8.5L,8.3L,8.9L,9.6L,,,4,6,https://www.ambitionbox.com/salaries/cint-salaries/senior-quality-specialist
+Cint,Customer Success Manager,All India,3,3,13.7L,10.0L,16.5L,14.5L,12.2L,15.5L,16.1L,85%,15%,3,9,https://www.ambitionbox.com/salaries/cint-salaries/customer-success-manager
+Cint,Customer Success Manager,New Delhi (Delhi),2,3,13.7L,10.0L,16.5L,14.5L,12.2L,15.5L,16.1L,85%,15%,3,9,https://www.ambitionbox.com/salaries/cint-salaries/customer-success-manager
+Cint,Customer Success Manager,Gurugram (Haryana),1,3,13.7L,10.0L,16.5L,14.5L,12.2L,15.5L,16.1L,85%,15%,3,9,https://www.ambitionbox.com/salaries/cint-salaries/customer-success-manager
+Cint,Senior IT Support Specialist,All India,3,3,8.8L,7.0L,10.0L,9.4L,8.2L,9.7L,9.9L,,,3,6,https://www.ambitionbox.com/salaries/cint-salaries/senior-it-support-specialist
+Cint,Senior IT Support Specialist,New Delhi (Delhi),1,3,8.8L,7.0L,10.0L,9.4L,8.2L,9.7L,9.9L,,,3,6,https://www.ambitionbox.com/salaries/cint-salaries/senior-it-support-specialist
+Cint,Senior IT Support Specialist,Noida (Uttar Pradesh),1,3,8.8L,7.0L,10.0L,9.4L,8.2L,9.7L,9.9L,,,3,6,https://www.ambitionbox.com/salaries/cint-salaries/senior-it-support-specialist
+Cint,Senior IT Support Specialist,Gurgaon / Gurugram (Haryana),1,3,8.8L,7.0L,10.0L,9.4L,8.2L,9.7L,9.9L,,,3,6,https://www.ambitionbox.com/salaries/cint-salaries/senior-it-support-specialist
+Cint,Senior Program Manager,All India,3,3,20.0L,15.0L,28.0L,20.0L,20.0L,20.0L,20.0L,,,9,9,https://www.ambitionbox.com/salaries/cint-salaries/senior-program-manager
+Cint,Senior Program Manager,Gurugram (Haryana),2,3,20.0L,15.0L,28.0L,20.0L,20.0L,20.0L,20.0L,,,9,9,https://www.ambitionbox.com/salaries/cint-salaries/senior-program-manager
+Cint,Data Analyst,All India,3,3,12.3L,8.0L,20.0L,8.8L,8.4L,14.4L,17.8L,,,2,5,https://www.ambitionbox.com/salaries/cint-salaries/data-analyst
+Cint,Data Analyst,Gurgaon / Gurugram (Haryana),2,3,12.3L,8.0L,20.0L,8.8L,8.4L,14.4L,17.8L,,,2,5,https://www.ambitionbox.com/salaries/cint-salaries/data-analyst
+Cint,Senior Business Intelligence Analyst,All India,3,3,21.1L,15.5L,27.0L,20.9L,18.2L,23.9L,25.8L,,,6,7,https://www.ambitionbox.com/salaries/cint-salaries/senior-business-intelligence-analyst
+Cint,Senior Business Intelligence Analyst,Gurugram (Haryana),2,3,21.1L,15.5L,27.0L,20.9L,18.2L,23.9L,25.8L,,,6,7,https://www.ambitionbox.com/salaries/cint-salaries/senior-business-intelligence-analyst
+Cint,Operations Manager,All India,3,3,18.3L,17.4L,20.0L,17.4L,17.4L,18.7L,19.5L,,,9,10,https://www.ambitionbox.com/salaries/cint-salaries/operations-manager
+Cint,Operations Manager,Kolkata (West Bengal),2,3,18.3L,17.4L,20.0L,17.4L,17.4L,18.7L,19.5L,,,9,10,https://www.ambitionbox.com/salaries/cint-salaries/operations-manager
+Cint,Operations Manager,Gurgaon / Gurugram (Haryana),1,3,18.3L,17.4L,20.0L,17.4L,17.4L,18.7L,19.5L,,,9,10,https://www.ambitionbox.com/salaries/cint-salaries/operations-manager
+Cint,Customer Success Executive,All India,3,3,8.8L,4.5L,12.3L,9.5L,7.0L,10.9L,11.7L,,,2,5,https://www.ambitionbox.com/salaries/cint-salaries/customer-success-executive
+Cint,Customer Success Executive,Chennai (Tamil Nadu),1,3,8.8L,4.5L,12.3L,9.5L,7.0L,10.9L,11.7L,,,2,5,https://www.ambitionbox.com/salaries/cint-salaries/customer-success-executive
+Cint,Csr Project Manager,All India,3,3,10.1L,4.5L,15.0L,10.8L,7.7L,12.9L,14.2L,,,1,4,https://www.ambitionbox.com/salaries/cint-salaries/csr-project-manager
+Cint,Csr Project Manager,Mumbai (Maharashtra),1,3,10.1L,4.5L,15.0L,10.8L,7.7L,12.9L,14.2L,,,1,4,https://www.ambitionbox.com/salaries/cint-salaries/csr-project-manager
+Cint,Csr Project Manager,Pune (Maharashtra),1,3,10.1L,4.5L,15.0L,10.8L,7.7L,12.9L,14.2L,,,1,4,https://www.ambitionbox.com/salaries/cint-salaries/csr-project-manager
+Cint,Senior Customer Success Executive,All India,3,3,16.9L,14.4L,19.2L,17.0L,15.7L,18.1L,18.8L,,,5,15,https://www.ambitionbox.com/salaries/cint-salaries/senior-customer-success-executive
+Cint,Senior Customer Success Executive,Mumbai (Maharashtra),1,3,16.9L,14.4L,19.2L,17.0L,15.7L,18.1L,18.8L,,,5,15,https://www.ambitionbox.com/salaries/cint-salaries/senior-customer-success-executive
+Cint,Senior Customer Success Executive,Gurgaon / Gurugram (Haryana),1,3,16.9L,14.4L,19.2L,17.0L,15.7L,18.1L,18.8L,,,5,15,https://www.ambitionbox.com/salaries/cint-salaries/senior-customer-success-executive
+Cint,Senior Data Analyst,All India,2,2,13.2L,11.5L,14.8L,12.8L,11.5L,14.2L,15.0L,,,4,7,https://www.ambitionbox.com/salaries/cint-salaries/senior-data-analyst
+Cint,Team Lead,All India,2,2,6.7L,5.8L,7.5L,6.5L,6.5L,6.5L,6.5L,,,2,3,https://www.ambitionbox.com/salaries/cint-salaries/team-lead
+Cint,Team Lead,Chennai (Tamil Nadu),2,2,6.7L,5.8L,7.5L,6.5L,6.5L,6.5L,6.5L,,,2,3,https://www.ambitionbox.com/salaries/cint-salaries/team-lead
+Cint,Senior Software Engineer,All India,2,2,29.9L,26.1L,33.3L,29.0L,29.0L,29.0L,29.0L,,,7,8,https://www.ambitionbox.com/salaries/cint-salaries/senior-soft-engineer
+Cint,Senior Software Engineer,Chennai (Tamil Nadu),2,2,29.9L,26.1L,33.3L,29.0L,29.0L,29.0L,29.0L,,,7,8,https://www.ambitionbox.com/salaries/cint-salaries/senior-soft-engineer
+Cint,Data Engineer,All India,2,2,17.0L,14.8L,19.0L,16.5L,16.5L,16.5L,16.5L,,,5,6,https://www.ambitionbox.com/salaries/cint-salaries/data-engineer
+Cint,Data Engineer,Gurgaon / Gurugram (Haryana),2,2,17.0L,14.8L,19.0L,16.5L,16.5L,16.5L,16.5L,,,5,6,https://www.ambitionbox.com/salaries/cint-salaries/data-engineer
+Cint,Technical Specialist,All India,2,2,9.3L,8.1L,10.3L,9.0L,7.5L,10.5L,10.5L,,,3,8,https://www.ambitionbox.com/salaries/cint-salaries/technical-specialist
+Cint,Technical Specialist,Faridabad (Haryana),1,2,9.3L,8.1L,10.3L,9.0L,7.5L,10.5L,10.5L,,,3,8,https://www.ambitionbox.com/salaries/cint-salaries/technical-specialist
+Cint,System Engineer,All India,2,2,15.4L,13.5L,17.2L,15.0L,13.0L,17.0L,17.0L,,,5,7,https://www.ambitionbox.com/salaries/cint-salaries/system-engineer
+Cint,System Engineer,Noida (Uttar Pradesh),2,2,15.4L,13.5L,17.2L,15.0L,13.0L,17.0L,17.0L,,,5,7,https://www.ambitionbox.com/salaries/cint-salaries/system-engineer
+Cint,Senior Associate,All India,2,2,4.1L,3.6L,4.6L,4.0L,4.0L,4.0L,4.0L,,,5,8,https://www.ambitionbox.com/salaries/cint-salaries/senior-associate
+Cint,Senior Associate,New Delhi (Delhi),2,2,4.1L,3.6L,4.6L,4.0L,4.0L,4.0L,4.0L,,,5,8,https://www.ambitionbox.com/salaries/cint-salaries/senior-associate
+Cint,Senior Security Engineer,All India,2,2,18.4L,16.1L,20.5L,17.9L,15.5L,20.2L,21.6L,89%,11%,6,7,https://www.ambitionbox.com/salaries/cint-salaries/senior-security-engineer
+Cint,Senior Security Engineer,New Delhi (Delhi),1,2,18.4L,16.1L,20.5L,17.9L,15.5L,20.2L,21.6L,89%,11%,6,7,https://www.ambitionbox.com/salaries/cint-salaries/senior-security-engineer
+Cint,Senior Security Engineer,Bengaluru (Karnataka),1,2,18.4L,16.1L,20.5L,17.9L,15.5L,20.2L,21.6L,89%,11%,6,7,https://www.ambitionbox.com/salaries/cint-salaries/senior-security-engineer
+Cint,Director Sales Apac,All India,2,2,51.2L,44.8L,57.2L,49.8L,48.6L,50.9L,51.5L,,,13,14,https://www.ambitionbox.com/salaries/cint-salaries/director-sales-apac
+Cint,Director Sales Apac,Gurgaon / Gurugram (Haryana),2,2,51.2L,44.8L,57.2L,49.8L,48.6L,50.9L,51.5L,,,13,14,https://www.ambitionbox.com/salaries/cint-salaries/director-sales-apac
+Cint,Operations Team Coach,All India,2,2,7.1L,6.2L,7.9L,6.9L,6.9L,6.9L,6.9L,,,3,3,https://www.ambitionbox.com/salaries/cint-salaries/operations-team-coach
+Cint,Operations Team Coach,Gurugram (Haryana),2,2,7.1L,6.2L,7.9L,6.9L,6.9L,6.9L,6.9L,,,3,3,https://www.ambitionbox.com/salaries/cint-salaries/operations-team-coach
+Cint,Security Operations Engineer,All India,2,2,13.6L,11.9L,15.2L,13.2L,13.2L,13.2L,13.2L,,,6,7,https://www.ambitionbox.com/salaries/cint-salaries/security-operations-engineer
+Cint,Security Operations Engineer,New Delhi (Delhi),2,2,13.6L,11.9L,15.2L,13.2L,13.2L,13.2L,13.2L,,,6,7,https://www.ambitionbox.com/salaries/cint-salaries/security-operations-engineer
