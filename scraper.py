@@ -3,10 +3,13 @@ from bs4 import BeautifulSoup
 import csv
 import json
 import time
+import random
 import sys
 import re
 import http.cookiejar
 import os
+from concurrent.futures import ThreadPoolExecutor, as_completed
+import threading
 from rich.console import Console
 from rich.progress import Progress, SpinnerColumn, BarColumn, TextColumn, TimeElapsedColumn, TimeRemainingColumn, MofNCompleteColumn
 from rich.table import Table
@@ -139,17 +142,37 @@ def _get_session() -> requests.Session:
 
 
 def _tracked_get(url: str, **kwargs) -> requests.Response:
-    """Wrapper around session.get that tracks request count and errors."""
+    """Wrapper around session.get that tracks request count and errors.
+    On failure (network error or HTTP 429/5xx), backs off and retries
+    with increasing wait times until the request succeeds."""
     STATS.total_requests += 1
     STATS.last_url = url
-    try:
-        resp = _get_session().get(url, **kwargs)
-        if resp.status_code >= 400:
+    backoff = 30  # start with 30s pause
+    max_backoff = 300  # cap at 5 minutes
+
+    while True:
+        try:
+            resp = _get_session().get(url, **kwargs)
+            if resp.status_code in (429, 503):
+                STATS.total_errors += 1
+                console.print(f"[red]Rate limited ({resp.status_code}), pausing {backoff}s...[/red]")
+                time.sleep(backoff)
+                backoff = min(backoff * 2, max_backoff)
+                continue
+            if resp.status_code >= 500:
+                STATS.total_errors += 1
+                console.print(f"[red]Server error ({resp.status_code}), pausing {backoff}s...[/red]")
+                time.sleep(backoff)
+                backoff = min(backoff * 2, max_backoff)
+                continue
+            if resp.status_code >= 400:
+                STATS.total_errors += 1
+            return resp
+        except requests.RequestException as e:
             STATS.total_errors += 1
-        return resp
-    except requests.RequestException:
-        STATS.total_errors += 1
-        raise
+            console.print(f"[red]Request failed ({e}), pausing {backoff}s...[/red]")
+            time.sleep(backoff)
+            backoff = min(backoff * 2, max_backoff)
 
 
 def _clean(text: str) -> str:
@@ -170,14 +193,57 @@ def get_company_slug(company_name: str) -> str:
     return company_name.strip().lower().replace(" ", "-")
 
 
-def resolve_slug(company_input: str) -> tuple[str, str]:
-    if '.' in company_input and ' ' not in company_input:
-        search_term = domain_to_search_term(company_input)
-    else:
-        search_term = company_input
+def _normalize_domain(d: str) -> str:
+    """Normalize a domain for comparison (strip scheme, www, trailing slash)."""
+    d = d.strip().lower()
+    d = re.sub(r'^https?://', '', d)
+    d = re.sub(r'^www\.', '', d)
+    return d.rstrip('/')
 
-    slug_guess = search_term.strip().lower().replace(" ", "-")
 
+def _extract_website_from_overview(html: str) -> str | None:
+    """Extract company website from AmbitionBox overview page's __NEXT_DATA__."""
+    m = re.search(r'<script id="__NEXT_DATA__"[^>]*>(.*?)</script>', html)
+    if not m:
+        return None
+    try:
+        data = json.loads(m.group(1))
+        props = data.get("props", {}).get("pageProps", {})
+        meta = props.get("companyMetaInformation", {})
+        return meta.get("website") or meta.get("websiteName") or None
+    except (json.JSONDecodeError, AttributeError):
+        pass
+    return None
+
+
+def _get_company_name_from_domain(domain: str) -> str | None:
+    """Fetch the homepage of a domain and extract the company name from <title>."""
+    url = f"https://www.{_normalize_domain(domain)}" if not domain.startswith("http") else domain
+    try:
+        resp = _get_session().get(url, timeout=10, allow_redirects=True,
+                                  headers={"User-Agent": HEADERS["User-Agent"]})
+        if resp.status_code == 200:
+            m = re.search(r'<title[^>]*>([^<]+)</title>', resp.text, re.IGNORECASE)
+            if m:
+                title = m.group(1).strip()
+                # Extract company name: take text before common separators
+                for sep in [" | ", " - ", " – ", " — ", " : ", " · "]:
+                    if sep in title:
+                        parts = title.split(sep)
+                        # Pick the shortest meaningful part (usually the company name)
+                        candidates = [p.strip() for p in parts if len(p.strip()) > 1]
+                        if candidates:
+                            # Prefer parts that look like a company name (shorter, capitalized)
+                            title = min(candidates, key=len)
+                        break
+                return title
+    except requests.RequestException:
+        pass
+    return None
+
+
+def _try_slug(slug_guess: str) -> tuple[str, str, str] | None:
+    """Try a slug and return (real_slug, display_name, page_html) or None."""
     url = f"{BASE_URL}/{slug_guess}-salaries"
     try:
         resp = _tracked_get(url, timeout=15, allow_redirects=True)
@@ -185,13 +251,79 @@ def resolve_slug(company_input: str) -> tuple[str, str]:
             final_path = resp.url.split('/salaries/')[-1]
             real_slug = final_path.replace('-salaries', '').split('?')[0]
             if real_slug:
-                display_name = company_input
+                display_name = slug_guess
                 title_match = re.search(r'<title>(.+?)\s+Salar', resp.text)
                 if title_match:
                     display_name = title_match.group(1).strip()
-                return real_slug, display_name
+                return real_slug, display_name, resp.text
     except requests.RequestException:
         pass
+    return None
+
+
+def _check_overview_website(slug: str) -> str | None:
+    """Fetch overview page for a slug and return the website, or None."""
+    overview_url = f"https://www.ambitionbox.com/overview/{slug}-overview"
+    try:
+        resp = _tracked_get(overview_url, timeout=15)
+        if resp.status_code == 200:
+            return _extract_website_from_overview(resp.text)
+    except requests.RequestException:
+        pass
+    return None
+
+
+def resolve_slug(company_input: str) -> tuple[str | None, str]:
+    is_domain = '.' in company_input and ' ' not in company_input
+
+    if is_domain:
+        search_term = domain_to_search_term(company_input)
+        input_domain = _normalize_domain(company_input)
+    else:
+        search_term = company_input
+        input_domain = None
+
+    slug_guess = search_term.strip().lower().replace(" ", "-")
+
+    # Try the direct slug guess first
+    result = _try_slug(slug_guess)
+    if result:
+        real_slug, display_name, page_html = result
+
+        # If input was NOT a domain, just return the result
+        if not input_domain:
+            return real_slug, display_name
+
+        # Verify by checking the website on the overview page
+        page_website = _check_overview_website(real_slug)
+        if page_website and _normalize_domain(page_website) == input_domain:
+            return real_slug, display_name
+
+        # Website doesn't match — fetch the actual domain's homepage to get company name
+        console.print(f"[yellow]Domain mismatch for '{company_input}' "
+                       f"(page has '{page_website or 'unknown'}'), looking up actual company name...[/yellow]")
+
+        company_name = _get_company_name_from_domain(company_input)
+        if company_name:
+            console.print(f"[dim]Domain title suggests: '{company_name}'[/dim]")
+            alt_slug = company_name.strip().lower().replace(" ", "-")
+            # Remove non-alphanumeric chars except hyphens
+            alt_slug = re.sub(r'[^a-z0-9\-]', '', alt_slug)
+            alt_slug = re.sub(r'-+', '-', alt_slug).strip('-')
+
+            if alt_slug and alt_slug != slug_guess:
+                alt_result = _try_slug(alt_slug)
+                if alt_result:
+                    alt_real_slug, alt_display, _ = alt_result
+                    # Verify this one too
+                    alt_website = _check_overview_website(alt_real_slug)
+                    if alt_website and _normalize_domain(alt_website) == input_domain:
+                        console.print(f"[green]Found correct match: {alt_display} ({alt_real_slug})[/green]")
+                        return alt_real_slug, alt_display
+
+        # Fallback: skip this company
+        console.print(f"[red]Could not find matching company for domain '{company_input}', skipping.[/red]")
+        return None, company_input
 
     return slug_guess, company_input
 
@@ -231,7 +363,7 @@ def _fmt_salary(val) -> str:
         return str(val)
 
 
-def scrape_role_detail(detail_path: str, company_name: str) -> list[dict]:
+def scrape_role_detail(detail_path: str, company_name: str, company_input: str = "") -> list[dict]:
     url = f"https://www.ambitionbox.com{detail_path}"
     resp = _tracked_get(url, timeout=15)
     if resp.status_code == 404:
@@ -252,6 +384,7 @@ def scrape_role_detail(detail_path: str, company_name: str) -> list[dict]:
     percentiles = summary.get("percentiles", {})
 
     base_row = {
+        "input": company_input,
         "company": company_name,
         "role": profile.get("profileName", ""),
         "num_salaries": summary.get("totalSalaryDataPoints", ""),
@@ -329,8 +462,18 @@ def get_total_pages(company_slug: str, per_page: int = 20) -> int:
     return max_page
 
 
-def scrape_company(company_name: str, max_pages: int = 0, fetch_details: bool = True) -> list[dict]:
-    """Scrape all salary data for a company with rich progress display."""
+def scrape_company(company_name: str, max_pages: int = 0, fetch_details: bool = True,
+                    done_paths: set[str] | None = None) -> list[dict]:
+    """Scrape all salary data for a company with rich progress display.
+
+    Args:
+        done_paths: detail_path values already fetched in a previous attempt.
+                    These roles will be skipped so the scrape resumes where it
+                    left off.
+    """
+    if done_paths is None:
+        done_paths = set()
+
     STATS.current_company = company_name
     STATS.current_phase = "Resolving slug..."
 
@@ -338,6 +481,13 @@ def scrape_company(company_name: str, max_pages: int = 0, fetch_details: bool = 
     console.print()
     with console.status(f"[bold cyan]Resolving '{company_name}'...", spinner="dots"):
         slug, display_name = resolve_slug(company_name)
+    if slug is None:
+        STATS.companies_failed += 1
+        STATS.companies_done += 1
+        STATS.company_results.append({
+            "name": display_name, "slug": "—", "pages": 0, "roles": 0, "rows": 0, "status": "fail",
+        })
+        return []
     console.print(f"[bold green]>>>[/] [bold]{display_name}[/] [dim](slug: {slug})[/dim]")
 
     # Get total pages
@@ -385,6 +535,7 @@ def scrape_company(company_name: str, max_pages: int = 0, fetch_details: bool = 
 
     if not fetch_details:
         for row in role_links:
+            row["input"] = company_name
             row["company"] = display_name
         STATS.companies_done += 1
         STATS.total_rows += len(role_links)
@@ -394,10 +545,21 @@ def scrape_company(company_name: str, max_pages: int = 0, fetch_details: bool = 
         })
         return role_links
 
-    # Step 2: Fetch detail pages
+    # Step 2: Fetch detail pages (concurrent), skipping already-done paths
     STATS.current_phase = "Fetching role details..."
     all_results = []
-    fetchable = [r for r in role_links if r.get("detail_path")]
+    fetchable = [r for r in role_links if r.get("detail_path") and r["detail_path"] not in done_paths]
+
+    if done_paths:
+        skipped = len([r for r in role_links if r.get("detail_path") and r["detail_path"] in done_paths])
+        console.print(f"  [dim]Resuming — skipping {skipped} already-fetched roles, {len(fetchable)} remaining[/dim]")
+
+    results_lock = threading.Lock()
+    DETAIL_WORKERS = 4
+
+    def _fetch_one(role):
+        time.sleep(random.uniform(0.3, 0.8))
+        return role.get("role", "?"), role["detail_path"], scrape_role_detail(role["detail_path"], display_name, company_name)
 
     with Progress(
         SpinnerColumn(),
@@ -410,16 +572,16 @@ def scrape_company(company_name: str, max_pages: int = 0, fetch_details: bool = 
         console=console,
     ) as progress:
         task = progress.add_task("details", total=len(fetchable), current="")
-        for i, role in enumerate(fetchable):
-            role_name = role.get("role", "?")
-            progress.update(task, current=role_name[:40])
-            detail_rows = scrape_role_detail(role["detail_path"], display_name)
-            all_results.extend(detail_rows)
-            STATS.total_detail_pages += 1
-            STATS.total_rows += len(detail_rows)
-            progress.update(task, advance=1)
-            if i < len(fetchable) - 1:
-                time.sleep(1)
+        with ThreadPoolExecutor(max_workers=DETAIL_WORKERS) as pool:
+            futures = {pool.submit(_fetch_one, role): role for role in fetchable}
+            for future in as_completed(futures):
+                role_name, detail_path, detail_rows = future.result()
+                with results_lock:
+                    all_results.extend(detail_rows)
+                    done_paths.add(detail_path)
+                    STATS.total_detail_pages += 1
+                    STATS.total_rows += len(detail_rows)
+                progress.update(task, advance=1, current=role_name[:40])
 
     console.print(f"  [green]{len(all_results)} rows[/green] [dim](roles x cities) scraped for {display_name}[/dim]")
 
@@ -438,7 +600,7 @@ def save_to_csv(data: list[dict], filename: str):
         return
 
     fieldnames = [
-        "company", "role", "city", "city_data_points", "num_salaries",
+        "input", "company", "role", "city", "city_data_points", "num_salaries",
         "avg_salary", "min_salary", "max_salary",
         "median_salary", "p25_salary", "p75_salary", "p90_salary",
         "fixed_pct", "variable_pct", "min_exp", "max_exp", "detail_url",
@@ -450,19 +612,33 @@ def save_to_csv(data: list[dict], filename: str):
     console.print(f"\n[bold green]Saved {len(data)} rows to {filename}[/bold green]")
 
 
-def main():
-    # --- CONFIGURE YOUR COMPANIES HERE ---
-    # Accepts company names ("TCS"), slugs ("tcs"), or domains ("tcs.com")
-    companies = [
-        "crunchyroll.com",
-    ]
-    max_pages_per_company = 1  # 0 = all pages
-    output_file = "salaries.csv"
-    # -------------------------------------
+def load_domains(filepath: str = "domains.csv") -> list[str]:
+    """Load company domains/names from a CSV file (one per line)."""
+    domains = []
+    with open(filepath, newline="", encoding="utf-8") as f:
+        reader = csv.reader(f)
+        for row in reader:
+            if row and row[0].strip() and not row[0].strip().startswith("#"):
+                domains.append(row[0].strip())
+    return domains
 
-    # Or pass companies as command-line args: python scraper.py "TCS" "Infosys" "Google"
+
+def main():
+    DOMAINS_FILE = "domains.csv"
+    max_pages_per_company = 0  # 0 = all pages
+    output_dir = "output"
+
+    # Load from CLI args, or domains.csv
     if len(sys.argv) > 1:
         companies = sys.argv[1:]
+    elif os.path.exists(DOMAINS_FILE):
+        companies = load_domains(DOMAINS_FILE)
+        console.print(f"[dim]Loaded {len(companies)} companies from {DOMAINS_FILE}[/dim]")
+    else:
+        console.print(f"[red]No {DOMAINS_FILE} found. Create it with one domain/company per line.[/red]")
+        return
+
+    os.makedirs(output_dir, exist_ok=True)
 
     STATS.total_companies = len(companies)
 
@@ -470,19 +646,43 @@ def main():
     console.print()
     console.print(Panel(
         f"[bold]AmbitionBox Salary Scraper[/bold]\n"
-        f"[dim]Companies: {len(companies)} | Max pages/company: {max_pages_per_company or 'all'} | Output: {output_file}[/dim]",
+        f"[dim]Companies: {len(companies)} | Max pages/company: {max_pages_per_company or 'all'} | Output: {output_dir}/[/dim]",
         border_style="cyan",
     ))
 
-    all_data = []
+    max_retries = 3
     for idx, company in enumerate(companies, 1):
         console.rule(f"[bold cyan] Company {idx}/{len(companies)}: {company} ", style="cyan")
-        try:
-            data = scrape_company(company, max_pages=max_pages_per_company)
-            all_data.extend(data)
-        except Exception as e:
-            console.print(f"  [bold red]ERROR:[/bold red] {e}")
-            STATS.total_errors += 1
+        success = False
+        accumulated_data = []
+        done_paths: set[str] = set()
+
+        for attempt in range(1, max_retries + 1):
+            try:
+                data = scrape_company(company, max_pages=max_pages_per_company,
+                                      done_paths=done_paths)
+                accumulated_data.extend(data)
+                success = True
+                break
+            except Exception as e:
+                STATS.total_errors += 1
+                if attempt < max_retries:
+                    retry_delay = 60 * attempt  # 60s, 120s, ...
+                    console.print(f"  [bold red]ERROR (attempt {attempt}/{max_retries}):[/bold red] {e}")
+                    console.print(f"  [yellow]Retrying in {retry_delay}s "
+                                  f"(will resume from {len(done_paths)} already-fetched roles)...[/yellow]")
+                    time.sleep(retry_delay)
+                else:
+                    console.print(f"  [bold red]ERROR (attempt {attempt}/{max_retries}):[/bold red] {e}")
+                    console.print(f"  [red]All {max_retries} attempts failed, skipping.[/red]")
+
+        if accumulated_data:
+            company_label = accumulated_data[0].get("company", company)
+            safe_name = re.sub(r'[^\w\s-]', '', company_label).strip().replace(' ', '_')
+            output_file = os.path.join(output_dir, f"{safe_name}.csv")
+            save_to_csv(accumulated_data, output_file)
+
+        if not success and not accumulated_data:
             STATS.companies_failed += 1
             STATS.companies_done += 1
             STATS.company_results.append({
@@ -490,10 +690,9 @@ def main():
             })
 
         if idx < len(companies):
-            time.sleep(2)
-
-    # Save
-    save_to_csv(all_data, output_file)
+            delay = random.randint(10, 120)
+            console.print(f"[dim]Waiting {delay}s before next company...[/dim]")
+            time.sleep(delay)
 
     # Final summary
     console.print()
